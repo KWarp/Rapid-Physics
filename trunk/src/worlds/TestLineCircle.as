@@ -43,11 +43,12 @@ package worlds
 			super.create();
 			setBackgroundColor(0x000000);
 			
-			titleText = new RapidText(0, 10, RapidG.width, "TestLineCircle", false);
+			titleText = new RapidText(0, 10, RapidG.width, "TestLineCircle\nMove the mouse to guide the line\nThe pink dot marks the point of entry", false);
 			titleText.setFormat(null, 12, 0xFFFFFF, "center");
 			flashSprite.addChild(titleText.textField);
 						
 			line = new RapidLine(0, 0, 100, 100);
+			line.fixed = true;
 			circle1 = new RapidCircle(200, 200, 60);
 			circle2 = new RapidCircle(400, 100, 25);
 			resultPoint = new RapidPoint(0, 0, 3);
@@ -82,6 +83,7 @@ package worlds
 			// line follows mouse
 			line.x = RapidG.mouseX - line.center.x;
 			line.y = RapidG.mouseY - line.center.y;
+			line.setEnd(line.x + line.width, line.y+line.height);
 			
 			// this code would normally be contained in an island if part of this physics simulation, 
 			// but I want to display the collision information
@@ -111,6 +113,12 @@ package worlds
 			
 			
 		}
+		
+		public override function updatePause():void
+		{
+			TitleScreen.handleGlobalInput(host);
+		}
+		
 		
 		
 	}

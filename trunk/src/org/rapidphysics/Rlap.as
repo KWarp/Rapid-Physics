@@ -239,6 +239,11 @@ package org.rapidphysics
 			// resolve the current point
 			RapidU.reflectPosition(point.nextPosition, pointOfCollision, line.normal);
 			
+			if(RapidG.visualDebug)
+			{
+				RapidG.visualDebugLines.push( [point.position.x, point.position.y, pointOfCollision.x, pointOfCollision.y] );
+			}
+			
 			// set current position to point of collision
 			point.position.x = pointOfCollision.x;
 			point.position.y = pointOfCollision.y;
@@ -268,6 +273,11 @@ package org.rapidphysics
 			
 			// resolve the current point
 			RapidU.reflectPosition(point.nextPosition, pointOfCollision, pt);
+			
+			if(RapidG.visualDebug)
+			{
+				RapidG.visualDebugLines.push( [point.position.x, point.position.y, pointOfCollision.x, pointOfCollision.y] );
+			}
 			
 			// set current position to point of collision
 			point.position.x = pointOfCollision.x;

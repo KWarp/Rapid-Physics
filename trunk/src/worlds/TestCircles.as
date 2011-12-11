@@ -29,7 +29,7 @@ package worlds
 			setBackgroundColor(0x000000);
 			
 			// title text
-			titleText = new RapidText(0, 10, RapidG.width, "TestCircles", false);
+			titleText = new RapidText(0, 10, RapidG.width, "TestCircles\nMove the mouse around to guide the circle", false);
 			titleText.setFormat(null, 12, 0xFFFFFF, "center");
 			flashSprite.addChild(titleText.textField);
 			
@@ -76,6 +76,11 @@ package worlds
 			// display results
 			pointText.text = "distance1: " + result1 + "\n" +
 							 "distance2: " + result2;
+		}
+		
+		public override function updatePause():void
+		{
+			TitleScreen.handleGlobalInput(host);
 		}
 		
 	}

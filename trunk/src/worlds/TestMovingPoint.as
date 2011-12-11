@@ -76,7 +76,8 @@ package worlds
 			point.y = TOP + 10;
 			point.velocity.x = 100;
 			point.velocity.y = 90;
-			
+			point.thickness = 3;
+	
 			plIsland.points.push(point);
 			
 			// add the points and lines to the RapidWorld so that they are updated and drawn
@@ -155,6 +156,12 @@ package worlds
 				"collisions solved per frame: " + plIsland.collisionsResolvedThisFrame;
 				
 		}
+		
+		public override function updatePause():void
+		{
+			TitleScreen.handleGlobalInput(host);
+		}
+		
 		
 	}
 }

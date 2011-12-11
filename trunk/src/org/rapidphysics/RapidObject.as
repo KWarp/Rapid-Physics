@@ -85,7 +85,7 @@ package org.rapidphysics
 		public var predictMotionFunction:Function;
 		private var integrationMapper:Array;
 		
-		private var velColor:uint = 0xFFFF00; // yellow
+		private var velColor:uint = 0x0000FF; // yellow
 		private var accColor:uint = 0xFF0000; // red
 		
 		public function RapidObject(X:Number=0, Y:Number=0)
@@ -194,6 +194,11 @@ package org.rapidphysics
 			y = nextY;
 			velocity.x = nextVelocity.x;
 			velocity.y = nextVelocity.y;
+			
+			if(RapidG.visualDebug)
+			{
+				RapidG.visualDebugLines.push( [prevX, prevY, x, y] );
+			}
 		}
 		
 		/**

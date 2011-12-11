@@ -57,6 +57,12 @@ package org.rapidphysics
 		
 		public static var keys:Keyboard = new Keyboard();
 		
+		/**
+		 * Stores all of the lines that visual debug needs for later drawing.
+		 * Each entry is an array containing [x1, y1, x2, y2] 
+		 */
+		public static var visualDebugLines:Array = new Array();
+		
 		public function RapidG()
 		{
 		}

@@ -59,6 +59,7 @@ package worlds
 			//point.y = (TOP + BOTTOM)/2;
 			point.velocity.x = 100;
 			point.velocity.y = 30;
+			point.thickness = 3;
 			
 			island.points.push(point);
 			
@@ -113,6 +114,11 @@ package worlds
 			pointText.text = "velocity: " + point.velocity.length + "\n" +
 				"collisions solved per frame: " + island.collisionsResolvedThisFrame;
 				
+		}
+		
+		public override function updatePause():void
+		{
+			TitleScreen.handleGlobalInput(host);
 		}
 		
 	}

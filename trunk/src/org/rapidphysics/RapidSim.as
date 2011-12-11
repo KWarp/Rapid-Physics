@@ -106,6 +106,7 @@ package org.rapidphysics
 			
 			if(RapidG.paused)
 			{
+				currentWorldInstance.updatePause();
 				// update pause
 				if(RapidG.keys.justReleased("RBRACKET"))
 					step();
@@ -134,7 +135,7 @@ package org.rapidphysics
 			
 			if(RapidG.keys.justPressed("O"))
 				RapidG.visualDebug = !RapidG.visualDebug;
-
+			
 			// reset state
 			if(RapidG.keys.justPressed("Q"))
 			{
@@ -145,6 +146,8 @@ package org.rapidphysics
 		
 		protected function step():void
 		{
+			RapidG.visualDebugLines.length = 0; // clear 
+			
 			RapidG.mouseX = this.mouseX;
 			RapidG.mouseY = this.mouseY;
 			

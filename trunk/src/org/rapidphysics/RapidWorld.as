@@ -1,5 +1,6 @@
 package org.rapidphysics
 {
+	import flash.display.Shape;
 	import flash.display.Sprite;
 
 	/**
@@ -13,6 +14,7 @@ package org.rapidphysics
 		 * Convenient access point to the Flash Display List 
 		 */
 		public var flashSprite:Sprite;
+		protected var visualDebugShape:Shape;
 		protected var host:RapidSim;
 		
 		/**
@@ -24,7 +26,9 @@ package org.rapidphysics
 		{
 			super();
 			flashSprite = new Sprite();
+			visualDebugShape = new Shape();
 			islandManager = new IslandManager();
+			flashSprite.addChild(visualDebugShape);
 		}
 		
 		public function setBackgroundColor(color:uint, alpha:Number=1.0):void
@@ -80,6 +84,34 @@ package org.rapidphysics
 			super.postUpdate();
 			
 			// all RapidObjects have predicted their next positions (useful for drawing)
+		}
+		
+		/**
+		 * Called when the simulation is paused 
+		 * 
+		 */
+		public function updatePause():void
+		{
+		
+		}
+		
+		public override function preDraw():void
+		{
+			super.preDraw();
+			visualDebugShape.graphics.clear();
+		}
+		
+		public override function debugDraw():void
+		{
+			super.debugDraw();
+			
+			visualDebugShape.graphics.lineStyle(1, 0xFFFF00, 1);
+			for each(var array:Array in RapidG.visualDebugLines)
+			{
+				visualDebugShape.graphics.moveTo(array[0], array[1]);
+				visualDebugShape.graphics.lineTo(array[2], array[3]);
+			}
+			
 		}
 		
 		

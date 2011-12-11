@@ -152,5 +152,10 @@ package worlds
 			super.update();
 		}
 		
+		public override function updatePause():void
+		{
+			TitleScreen.handleGlobalInput(host);
+		}
+		
 	}
 }

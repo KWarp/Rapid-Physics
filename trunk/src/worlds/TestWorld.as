@@ -42,5 +42,11 @@ package worlds
 			add(point);
 		}
 		
+		public override function updatePause():void
+		{
+			TitleScreen.handleGlobalInput(host);
+		}
+		
+		
 	}
 }
